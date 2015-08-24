@@ -11,4 +11,16 @@ class MerchantsController < ApplicationController
 		merchant_id = params[:id]
 		@merchant = Merchant.find(merchant_id)
 	end
+	def update
+		merchant_id = params[:id]
+		@merchant = Merchant.find(merchant_id)
+
+		merchant_params = params.require(:merchant).permit(:name, :body, :avgprice)
+		@merchant.update(merchant_params)
+
+		redirect_to merchant_path(@merchant)
+	end
+	def new
+		@merchant = Merchant.new
+	end
 end
