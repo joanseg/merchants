@@ -1,10 +1,14 @@
-Merchants::Application.routes.draw do
+Rails.application.routes.draw do
+    resources :merchants
 
-  get 'merchants' => 'merchants#index'
-  get 'merchants/new' => 'merchants#new'
-  get 'merchants/:id' => 'merchants#show', as: :merchant
-  get 'merchants/:id/edit' => 'merchants#edit', as: :edit_merchant
-  patch 'merchants/:id' => 'merchants#update'
+# Merchants::Application.routes.draw do
+
+  # get 'merchants' => 'merchants#index'
+  # get 'merchants/new' => 'merchants#new'
+  # get 'merchants/:id' => 'merchants#show', as: :merchant
+  # get 'merchants/:id/edit' => 'merchants#edit', as: :edit_merchant
+  # patch 'merchants/:id' => 'merchants#update'
+  # post 'merchants' => 'merchants#create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
