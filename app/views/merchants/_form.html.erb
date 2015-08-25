@@ -18,6 +18,18 @@
 		<%= f.text_area :body, cols: 30, rows:10 %>
 	</p>
 	<p>
+		<%= f.label :latitud %>
+		<%= f.number_field :latitud %>
+	</p>
+	<p>
+		<%= f.label :longitud %>
+		<%= f.number_field :longitud %>
+	</p>
+	<p>
+		<%= f.label :placeid %>
+		<%= f.text_field :placeid %>
+	</p>
+	<p>
 		<%= f.submit %>
 	</p>
 <% end %>

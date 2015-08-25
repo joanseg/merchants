@@ -13,9 +13,10 @@
 <html>
   <head>
     <title>Place details</title>
-     <!-- https://developers.google.com/maps/documentation/javascript/examples/place-search 
+<!--      https://developers.google.com/maps/documentation/javascript/examples/place-search 
+ -->    
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8" -->
+    <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <style>
@@ -40,7 +41,7 @@ function initMap() {
   var service = new google.maps.places.PlacesService(map);
 
   service.getDetails({
-    placeId: 'ChIJH6fuhEUbdkgRb6UADudVd2g'
+    placeId: '<%= @merchant.placeid %>'
   }, function(place, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
       var marker = new google.maps.Marker({
