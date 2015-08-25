@@ -1,0 +1,23 @@
+<%= form_for (@merchant) do |f| %>
+	<p>
+		<%= f.label :name %>
+	</p>
+	<p>
+		<%= f.text_field :name %>
+	</p>
+	<p>
+		<%= f.label :avgprice, "Average price per meal (GBP) " %>
+	</p>
+	<p>
+		<%= f.number_field :avgprice %>
+	</p>
+	<p>
+		<%= f.label :body %>
+	</p>
+	<p>
+		<%= f.text_area :body, cols: 30, rows:10 %>
+	</p>
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>

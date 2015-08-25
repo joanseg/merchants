@@ -1,34 +1,12 @@
 <h3><%= @merchant.name %></h3>
 
-<%= form_for(@merchant) do |f| %>
-	<p>
-		<%= f.label :name %>
-	</p>
-	<p>
-		<%= f.text_field :name %>
-	</p>
-	<p>
-		<%= f.label :avgprice, "Average price per meal (GBP) " %>
-	</p>
-	<p>
-		<%= f.number_field :avgprice %>
-	</p>
-	<p>
-		<%= f.label :body %>
-	</p>
-	<p>
-		<%= f.text_area :body, cols: 30, rows:10 %>
-	</p>
-	<p>
-		<%= f.submit %>
-	</p>
-<% end %>
+<%= render('form') %>
+
 <%= link_to 'Cancel', merchant_path(@merchant.id) %>
 
-	
-	<p>
-		Created at: <%= @merchant.created_at.to_s(:short) %>
-	</p>
-	<p>
-		Updated at: <%= @merchant.updated_at.to_s(:short) %>
-	</p>
+<p>
+	Created at: <%= @merchant.created_at.to_s(:short) %>
+</p>
+<p>
+	Updated at: <%= @merchant.updated_at.to_s(:short) %>
+</p>

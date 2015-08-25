@@ -32,4 +32,11 @@ class MerchantsController < ApplicationController
 		redirect_to merchant_path(merchant)
 	end
 
+	def destroy
+		merchant_id = params[:id]
+		merchant = Merchant.find(merchant_id)
+		merchant.destroy
+		redirect_to merchants_url
+	end
+
 end
