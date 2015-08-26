@@ -6,4 +6,20 @@ module MerchantsHelper
 			content_tag(:i, 'no data')
 		end
 	end
+
+
+
+	def show_image(merchant)
+		image_tag(default_image(merchant), width: "250", height: "150")
+	end
+
+	private
+	def default_image(merchant)
+		if merchant.image_name.present?
+			merchant.image_name
+		else
+			"default_image.png"
+		end 
+	end
+
 end

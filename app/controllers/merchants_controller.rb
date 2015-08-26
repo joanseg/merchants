@@ -1,8 +1,8 @@
 class MerchantsController < ApplicationController
 	def index
-		@merchants = Merchant.all.order(:name => :desc, :avgprice => :desc)
-		@expensive_merchants = Merchant.expensive_merchants
-		@budget_merchants = Merchant.budget_merchants
+		@merchants = Merchant.order_logic
+		@expensive_merchants = Merchant.expensive_merchants.order_logic
+		@budget_merchants = Merchant.budget_merchants.order_logic
 	end
 
 	def show
@@ -18,7 +18,6 @@ class MerchantsController < ApplicationController
 		merchant_id = params[:id]
 		@merchant = Merchant.find(merchant_id)
 
-		merchant_params = params.require(:merchant).permit(:name, :body, :avgprice, :latitud, :longitud, :placeid)
 		@merchant.update(merchant_params)
 
 		redirect_to merchant_path(@merchant)
@@ -29,8 +28,7 @@ class MerchantsController < ApplicationController
 	end
 
 	def create
-		merchant_params = params.require(:merchant).permit(:name, :body, :avgprice, :latitud, :longitud, :placeid)
-		merchant = Merchant.create(merchant_params)
+		merchant = Merchant.create(merchant_params())
 		redirect_to merchant_path(merchant)
 	end
 
@@ -39,6 +37,12 @@ class MerchantsController < ApplicationController
 		merchant = Merchant.find(merchant_id)
 		merchant.destroy
 		redirect_to merchants_url
+	end
+
+	private
+
+	def merchant_params()
+		params.require(:merchant).permit(:name, :body, :avgprice, :latitud, :longitud, :placeid, :image_name)
 	end
 
 end

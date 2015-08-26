@@ -8,4 +8,8 @@ class Merchant < ActiveRecord::Base
 		where("avgprice < 30")
 	end
 
+	def self.order_logic
+		all.order( :avgprice => :asc, :name => :asc)
+	end
+
 end
