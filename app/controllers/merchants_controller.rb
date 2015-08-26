@@ -1,6 +1,8 @@
 class MerchantsController < ApplicationController
 	def index
-		@merchants = Merchant.all
+		@merchants = Merchant.all.order(:name => :desc, :avgprice => :desc)
+		@expensive_merchants = Merchant.expensive_merchants
+		@budget_merchants = Merchant.budget_merchants
 	end
 
 	def show
