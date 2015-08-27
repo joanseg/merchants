@@ -67,3 +67,20 @@ src="https://maps.googleapis.com/maps/api/js?signed_in=true&libraries=places&cal
   </body>
 </html>
 
+
+<table border="1" >
+  <head>  
+  <th>Meals</th>
+  </head>
+  <tbody>
+  <% @recent_meals.limit(3).each do |meal| %>
+    <tr>
+      <th><%= meal.body %></th>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+
+

@@ -7,6 +7,8 @@ class MerchantsController < ApplicationController
 
 	def show
 		@merchant = Merchant.find(params[:id])
+		@meals = @merchant.meals
+		@recent_meals = @merchant.meals.recent_meals
 	end
 
 	def edit
@@ -28,6 +30,7 @@ class MerchantsController < ApplicationController
 
 	def create
 		merchant = Merchant.create(merchant_params())
+		flash[:notice] = "The new merchant was created"
 		redirect_to merchant_path(merchant)
 	end
 
@@ -35,6 +38,7 @@ class MerchantsController < ApplicationController
 		merchant_id = params[:id]
 		merchant = Merchant.find(merchant_id)
 		merchant.destroy
+		flash[:notice] = "The merchant #{merchant.name} was deleted"
 		redirect_to merchants_url
 	end
 
