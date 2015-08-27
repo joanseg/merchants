@@ -14,6 +14,7 @@ module MerchantsHelper
 	end
 
 	private
+	
 	def default_image(merchant)
 		if merchant.image_name.present?
 			merchant.image_name

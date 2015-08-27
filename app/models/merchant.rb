@@ -1,5 +1,7 @@
 class Merchant < ActiveRecord::Base
 
+	has_many :meals, dependent: :destroy
+
 	def self.expensive_merchants
 		where("avgprice >= 30")
 	end

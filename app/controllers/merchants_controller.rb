@@ -17,9 +17,8 @@ class MerchantsController < ApplicationController
 	def update
 		merchant_id = params[:id]
 		@merchant = Merchant.find(merchant_id)
-
 		@merchant.update(merchant_params)
-
+		flash[:notice] = "The merchant was updated"
 		redirect_to merchant_path(@merchant)
 	end
 
