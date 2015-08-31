@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-    resources :merchants
+    resources :merchants do
+      resources :meals
+    end
 
 # Merchants::Application.routes.draw do
 
@@ -63,4 +65,6 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
+
+  end
+

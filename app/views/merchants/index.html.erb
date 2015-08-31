@@ -13,10 +13,10 @@
   <tbody>
   <% @merchants.each do |merchant| %>
     <tr>
-        <th><%= link_to(merchant.name, merchant_path(merchant.id)) %> </th>
-        <th><%= number_to_currency( merchant.avgprice, { :unit => 'GBP' }) %></th>
-        <th><%= format_body(merchant) %></th>
-        <th><%= merchant.created_at.to_s(:short) %></th>
+        <td><%= link_to(merchant.name, merchant_path(merchant.id)) %> </td>
+        <td><%= number_to_currency( merchant.avgprice, { :unit => 'GBP' }) %></td>
+        <td><%= format_body(merchant) %></td>
+        <td><%= merchant.created_at.to_s(:short) %></td>
     </tr>
   <% end %>
   </tbody>

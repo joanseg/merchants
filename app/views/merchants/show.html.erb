@@ -75,11 +75,12 @@ src="https://maps.googleapis.com/maps/api/js?signed_in=true&libraries=places&cal
   <tbody>
   <% @recent_meals.limit(3).each do |meal| %>
     <tr>
-      <th><%= meal.body %></th>
+      <td><%= meal.body %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
+<%= link_to "All meals", merchant_meals_path(@merchant) %>
 
 
 
