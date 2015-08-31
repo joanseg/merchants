@@ -1,5 +1,11 @@
 <h3> <%= pluralize(@merchants.count, 'Merchant') %> near you</h3>
 
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
 <h4>Expensive Restaurants</h4>
 
 <p>All merchants</p>

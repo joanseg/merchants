@@ -5,6 +5,10 @@ class MerchantsController < ApplicationController
 		@budget_merchants = Merchant.budget_merchants.order_logic
 	end
 
+	def search
+		@merchants = Merchant.search_results
+	end
+
 	def show
 		@merchant = Merchant.find(params[:id])
 		@meals = @merchant.meals

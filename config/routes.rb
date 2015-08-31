@@ -3,6 +3,8 @@ Rails.application.routes.draw do
       resources :meals
     end
 
+    get 'search' => 'merchants#search'
+
 # Merchants::Application.routes.draw do
 
   # get 'merchants' => 'merchants#index'
