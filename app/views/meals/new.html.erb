@@ -1,0 +1,14 @@
+<h3>new meal for <%= @merchant.name %></h3>
+
+<%= form_for([@merchant, @meal]) do |f| %>
+	<p>
+		<%= f.label :body, "Please enter the meal description:" %>
+	</p>
+	<p>
+		<%= f.text_area :body, cols: 30, rows: 10 %>
+	</p>
+	<p>
+		<%= f.submit %>
+	</p>
+
+<% end %>

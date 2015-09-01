@@ -2,6 +2,10 @@ class Merchant < ActiveRecord::Base
 
 	has_many :meals, dependent: :destroy
 
+	validates :name, presence: true
+	validates :body, length: { minimum: 10 }
+	validates :avgprice, numericality: { equal_or_  }
+
 	def self.expensive_merchants
 		where("avgprice >= 30")
 	end
