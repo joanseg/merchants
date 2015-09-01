@@ -6,7 +6,13 @@ class MerchantsController < ApplicationController
 	end
 
 	def search
-		@merchants = Merchant.search_results
+		@merchants = Merchant.search_results(params[:q])
+		if @merchants.length == 1
+			@merchant = @merchants.first
+			@meals = @merchant.meals
+			@recent_meals = @merchant.meals.recent_meals
+			render :show
+		end
 	end
 
 	def show

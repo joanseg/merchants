@@ -14,8 +14,8 @@ class Merchant < ActiveRecord::Base
 		all.order( :avgprice => :asc, :name => :asc)
 	end
 
-	def self.search_results
-		where("name like ?", "%#{:q}%")
+	def self.search_results(term)
+		where("name like ?", "%#{term}%")
 	end
 
 end
