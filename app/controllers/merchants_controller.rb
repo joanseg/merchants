@@ -39,9 +39,15 @@ class MerchantsController < ApplicationController
 	end
 
 	def create
-		merchant = Merchant.create(merchant_params())
-		flash[:notice] = "The new merchant was created"
-		redirect_to merchant_path(merchant)
+		@merchant = Merchant.new(merchant_params)
+
+		if(@merchant.save)
+			flash[:notice] = "The new merchant was created"
+			redirect_to merchant_path(@merchant)
+		else
+			flash[:notice] = "Please check form errors"
+			render :new
+		end
 	end
 
 	def destroy
