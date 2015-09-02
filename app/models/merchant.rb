@@ -4,7 +4,11 @@ class Merchant < ActiveRecord::Base
 
 	validates :name, presence: true
 	validates :body, length: { minimum: 10 }
-	validates :avgprice, numericality: { equal_or_  }
+	validates :avgprice, numericality: { greater_than_or_equal_to: 0 }
+	validates :image_name, allow_blank: true, format: {
+		with: /\w+\.(gif|jpg|png)\z/i,
+		message: "must be a valid image (GIF; JPG or PNG)"
+	}
 
 	def self.expensive_merchants
 		where("avgprice >= 30")
