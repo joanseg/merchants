@@ -30,8 +30,14 @@ class MerchantsController < ApplicationController
 		merchant_id = params[:id]
 		@merchant = Merchant.find(merchant_id)
 		@merchant.update(merchant_params)
-		flash[:notice] = "The merchant was updated"
-		redirect_to merchant_path(@merchant)
+
+		if(@merchant.save)
+			flash[:notice] = "The merchant was updated"
+			redirect_to merchant_path(@merchant)
+		else
+			flash[:notice] = "Please check the form errors"
+			render :edit
+		end
 	end
 
 	def new
