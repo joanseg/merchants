@@ -8,9 +8,19 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *=require bootstrap.min
- *=require theme.min
+ *= require bootstrap.min
  *
  *= require_self
  *= require_tree .
  */
+
+ .field_with_errors > label  {
+    color: red;
+}
+
+.field_with_errors > textarea,
+.field_with_errors > input {
+    color: red;
+    border-style: solid;
+    border-width: 2px;
+}

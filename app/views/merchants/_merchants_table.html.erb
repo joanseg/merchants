@@ -1,0 +1,18 @@
+<table class="table-hover" >
+<caption><%= caption %></caption>
+  <tr>
+    <th>Merchant</th>
+    <th>Average Price</th>
+    <th>Description</th>
+    <th>Registered since</th>
+    <th></th>
+  </tr>
+  <% merchants.each do |merchant| %>
+    <tr>
+        <td><%= link_to(merchant.name, merchant_path(merchant.id)) %> </td>
+        <td><%= number_to_currency( merchant.avgprice, { :unit => 'GBP' }) %></td>
+        <td><%= format_body(merchant) %></td>
+        <td><%= merchant.created_at.to_s(:short) %></td>
+    </tr>
+  <% end %>
+</table>

@@ -1,4 +1,4 @@
-<h3> <%= pluralize(@merchants.count, 'Merchant') %> near you</h3>
+<h3> <%= pluralize(@merchants.count, 'Merchant') %>near you</h3>
 
 <%= form_tag("/search", method: "get") do %>
   <%= label_tag(:q, "Search for:") %>
@@ -6,67 +6,9 @@
   <%= submit_tag("Search") %>
 <% end %>
 
-<h4>Expensive Restaurants</h4>
-
-<p>All merchants</p>
-<table class="table-hover" >
-  <thead>
-    <th>Merchant</th>
-    <th>Average Price</th>
-    <th>Description</th>
-    <th>Registered since</th>
-  </thead>
-  <tbody>
-  <% @merchants.each do |merchant| %>
-    <tr>
-        <td><%= link_to(merchant.name, merchant_path(merchant.id)) %> </td>
-        <td><%= number_to_currency( merchant.avgprice, { :unit => 'GBP' }) %></td>
-        <td><%= format_body(merchant) %></td>
-        <td><%= merchant.created_at.to_s(:short) %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-
-<p>Expensive merchants</p>
-<table border="1" >
-	<thead>
-		<th>Merchant</th>
-		<th>Average Price</th>
-		<th>Description</th>
-		<th>Registered since</th>
-	</thead>
-	<tbody>
-	<% @expensive_merchants.each do |merchant| %>
-		<tr>
-  			<th><%= link_to(merchant.name, merchant_path(merchant.id)) %> </th>
-  			<th><%= number_to_currency( merchant.avgprice, { :unit => 'GBP' }) %></th>
-  			<th><%= format_body(merchant) %></th>
-  			<th><%= merchant.created_at.to_s(:short) %></th>
-  	</tr>
-	<% end %>
-	</tbody>
-</table>
-
-<p>Budget merchants</p>
-<table border="1" >
-  <thead>
-    <th>Merchant</th>
-    <th>Average Price</th>
-    <th>Description</th>
-    <th>Registered since</th>
-  </thead>
-  <tbody>
-  <% @budget_merchants.each do |merchant| %>
-    <tr>
-        <th><%= link_to(merchant.name, merchant_path(merchant.id)) %> </th>
-        <th><%= number_to_currency( merchant.avgprice, { :unit => 'GBP' }) %></th>
-        <th><%= format_body(merchant) %></th>
-        <th><%= merchant.created_at.to_s(:short) %></th>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<%= render partial: "merchants_table", locals: { merchants: @merchants, caption: "All Merchants" } %>
+<%= render partial: "merchants_table", locals: { merchants: @expensive_merchants, caption: "Expensive Merchants" } %>
+<%= render partial: "merchants_table", locals: { merchants: @budget_merchants, caption: "Affordable Merchants" } %>
 
 
 <%= link_to('Create new merchant', new_merchant_path) %>
