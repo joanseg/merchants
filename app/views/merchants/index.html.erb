@@ -1,4 +1,5 @@
-<h3> <%= pluralize(@merchants.count, 'Merchant') %>near you</h3>
+<%= link_to('Create new merchant', new_merchant_path) %>
+<h3> <%= pluralize(@merchants.count, 'Merchant') %> near you</h3>
 
 <%= form_tag("/search", method: "get") do %>
   <%= label_tag(:q, "Search for:") %>
@@ -10,8 +11,6 @@
 <%= render partial: "merchants_table", locals: { merchants: @expensive_merchants, caption: "Expensive Merchants" } %>
 <%= render partial: "merchants_table", locals: { merchants: @budget_merchants, caption: "Affordable Merchants" } %>
 
-
-<%= link_to('Create new merchant', new_merchant_path) %>
 
 <p></p>
 

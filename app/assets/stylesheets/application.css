@@ -24,3 +24,18 @@
     border-style: solid;
     border-width: 2px;
 }
+
+.table-title {
+	font-size: 20px;
+}
+
+th {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+td {
+	text-align: center;
+}
+.text-column {
+	text-align: left;
+}
