@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
+    
+    root 'merchants#index'
+
+    get 'login' => 'sessions#new'
+    post 'login' => 'sessions#create'
+    delete 'logout' => 'sessions#destroy'
+
     resources :merchants do
       resources :meals
     end
 
+    resources :users
     get 'search' => 'merchants#search'
 
 # Merchants::Application.routes.draw do
