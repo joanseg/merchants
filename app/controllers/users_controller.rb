@@ -33,8 +33,6 @@ class UsersController < ApplicationController
   	unless logged_in?
   		flash[:error] = "You must be logged in to access this section"
   		redirect_to login_url
-  	else
-  		# redirect_to user_path(???)
   	end
   end
 
