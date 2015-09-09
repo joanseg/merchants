@@ -1,4 +1,6 @@
 class MealsController < ApplicationController
+
+before_action :require_login, only: [ :new, :create ]	
 	
 	def index
 		@merchant = Merchant.find(params[:merchant_id])

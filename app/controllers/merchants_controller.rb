@@ -1,4 +1,7 @@
 class MerchantsController < ApplicationController
+
+  before_action :require_login, only: [:new, :edit, :update, :create, :destroy]
+
 	def index
 		@merchants = Merchant.order_logic
 		@expensive_merchants = Merchant.expensive_merchants.order_logic
@@ -45,6 +48,7 @@ class MerchantsController < ApplicationController
 	end
 
 	def create
+		
 		@merchant = Merchant.new(merchant_params)
 
 		if(@merchant.save)
@@ -69,5 +73,6 @@ class MerchantsController < ApplicationController
 	def merchant_params()
 		params.require(:merchant).permit(:name, :body, :avgprice, :latitud, :longitud, :placeid, :image_name)
 	end
+
 
 end

@@ -1,18 +1,20 @@
-<table class="table-hover" >
-<caption class="table-title" ><%= caption %></caption>
-  <tr>
-    <th>Merchant</th>
-    <th>Average Price</th>
-    <th>Description</th>
-    <th>Registered since</th>
-    <th></th>
-  </tr>
-  <% merchants.each do |merchant| %>
+ <div class="row"> 
+  <table class="table-hover well col-lg-8 col-sm-offset-2" >
+  <caption class="table-title" ><%= caption %></caption>
     <tr>
-        <td class="text-column"><%= link_to(merchant.name, merchant_path(merchant.id)) %> </td>
-        <td><%= number_to_currency( merchant.avgprice, { :unit => 'GBP' }) %></td>
-        <td class="text-column"><%= format_body(merchant) %></td>
-        <td><%= merchant.created_at.to_s(:short) %></td>
+      <th>Merchant</th>
+      <th>Average Price</th>
+      <th>Description</th>
+      <th>Registered since</th>
+      <th></th>
     </tr>
-  <% end %>
-</table>
+    <% merchants.each do |merchant| %>
+      <tr>
+          <td class="text-column"><%= link_to(merchant.name, merchant_path(merchant.id)) %> </td>
+          <td><%= number_to_currency( merchant.avgprice, { :unit => 'GBP' }) %></td>
+          <td class="text-column"><%= format_body(merchant) %></td>
+          <td><%= merchant.created_at.to_s(:short) %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
