@@ -1,0 +1,6 @@
+<div>
+	<h4><%= merchant.name %></h4>
+	<p><%= format_body(merchant) %></p>
+	<p><%= link_to(pluralize(merchant.meals.count, "meal"), merchant_meals_path(merchant)) %></p>
+	<p><%= link_to("Show", merchant_path(merchant)) %> | <%= link_to("Edit", edit_merchant_path(merchant)) %> | <%= link_to("Delete", merchant_path(merchant), method: :delete, data: {confirm: "Would you like to delete this Merchant?"}) %></p>
+</div>
