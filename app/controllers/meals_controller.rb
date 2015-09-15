@@ -1,18 +1,17 @@
 class MealsController < ApplicationController
 
 before_action :require_login, only: [ :new, :create ]	
+before_action :set_question
 	
 	def index
-		@merchant = Merchant.find(params[:merchant_id])
+		@meals = @merchant.meals
 	end 
 
 	def new
-		@merchant = Merchant.find(params[:merchant_id])
 		@meal = @merchant.meals.new
 	end
 
 	def create
-		@merchant = Merchant.find(params[:merchant_id])
 		@meal = @merchant.meals.new(meal_params)
 		@merchant.save
 		redirect_to merchant_path(@merchant)
@@ -22,5 +21,9 @@ before_action :require_login, only: [ :new, :create ]
 
 	def meal_params
 		params.require(:meal).permit(:body)
+	end
+
+	def set_question
+		@merchant = Merchant.find(params[:merchant_id])
 	end
 end

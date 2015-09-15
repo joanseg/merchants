@@ -12,6 +12,13 @@
 
 <%= show_image(@merchant) %>
 
+<p><u>Meals</u></p>
+
+<%= render partial: "meals/meal", collection: @merchant.meals, spacer_template: "shared/break" %>
+
+<%= link_to "See all meals", merchant_meals_path(@merchant) %> | <%= link_to "Add Meal", new_merchant_meal_path(@merchant) %>
+
+
 <html>
   <head>
     <title>Place details</title>
@@ -67,20 +74,8 @@ src="https://maps.googleapis.com/maps/api/js?signed_in=true&libraries=places&cal
   </body>
 </html>
 
-<%= link_to "Add Meal", new_merchant_meal_path(@merchant) %>
-<table border="1" >
-  <head>  
-  <th>Meals</th>
-  </head>
-  <tbody>
-  <% @recent_meals.limit(3).each do |meal| %>
-    <tr>
-      <td><%= meal.body %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-<%= link_to "All meals", merchant_meals_path(@merchant) %>
+
+
 
 
 

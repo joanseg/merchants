@@ -7,9 +7,9 @@
   <%= submit_tag("Search") %>
 <% end %>
 
-<%= render partial: "merchants_table", locals: { merchants: @merchants, caption: "All Merchants" } %>
-<%= render partial: "merchants_table", locals: { merchants: @expensive_merchants, caption: "Expensive Merchants" } %>
-<%= render partial: "merchants_table", locals: { merchants: @budget_merchants, caption: "Affordable Merchants" } %>
+<%= render partial: "merchants", locals: { merchants: @merchants, caption: "All Merchants" } %>
+<%= render partial: "merchants", locals: { merchants: @expensive_merchants, caption: "Expensive Merchants" } %>
+<%= render partial: "merchants", locals: { merchants: @budget_merchants, caption: "Affordable Merchants" } %>
 
 
 <p></p>
