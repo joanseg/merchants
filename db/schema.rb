@@ -11,13 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150907180811) do
+ActiveRecord::Schema.define(version: 20150917192717) do
 
   create_table "meals", force: true do |t|
     t.text     "body"
     t.integer  "merchant_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "price"
+    t.integer  "orders"
   end
 
   add_index "meals", ["merchant_id"], name: "index_meals_on_merchant_id"

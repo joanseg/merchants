@@ -2,6 +2,11 @@
 	<p>
 		<%= meal.body %>
 		<br/>
+		Price: <%= meal.price %> GBP
+		<br/>
 		<i>created <%= time_ago_in_words(meal.created_at) %> ago</i>
+		<br/>
+		<i> Orders to date: <%= meal.orders %> </i>
+		</br>
 	</p>
 </div>
