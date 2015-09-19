@@ -48,7 +48,6 @@ class MerchantsController < ApplicationController
 	end
 
 	def create
-		
 		@merchant = Merchant.new(merchant_params)
 
 		if(@merchant.save)

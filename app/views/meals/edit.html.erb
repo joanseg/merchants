@@ -1,17 +1,3 @@
 <h3>Edit meal for merchant: <%=  @merchant.name %></h3>
 
-<%= form_for([@merchant, @meal]) do |f| %>
-	<p>
-		<%= f.label :body, "Please enter the meal description:" %>
-	</br>
-		<%= f.text_area :body, cols: 30, rows: 10 %>
-	</p>
-		<%= f.label :price, "Enter meal price" %>
-	</br>
-		<%= f.text_field :price, :class => 'price', :value => (number_with_precision(f.object.price, :precision => 2) || 0) %>
-	</p>
-	<p>
-		<%= f.submit %>
-	</p>
-
-<% end %>
+<%= render('form') %>

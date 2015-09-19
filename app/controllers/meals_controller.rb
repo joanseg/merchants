@@ -5,7 +5,13 @@ before_action :set_question
 	
 	def index
 		@meals = @merchant.meals
+		meal_id = params[:id]
+		@meal = Meal.find(meal_id)
 	end 
+
+	def show
+ 		@meal = @merchant.meals.find(params[:id])
+ 	end
 
 	def new
 		@meal = @merchant.meals.new
@@ -13,8 +19,14 @@ before_action :set_question
 
 	def create
 		@meal = @merchant.meals.new(meal_params)
-		@merchant.save
-		redirect_to merchant_path(@merchant)
+		
+		if @merchant.save
+			flash[:notice] = "The new meal was created"
+			redirect_to merchant_path(@merchant)
+		else
+			flash[:notice] = "Please check form errors"
+			render :new
+		end
 	end
 
 	def edit
@@ -27,9 +39,15 @@ before_action :set_question
 		@meal = Meal.find(meal_id)
 
 		meal_params = params.require(:meal).permit(:body, :price)
-		@meal.update(meal_params)
+		@meal.update(meal_params) 
 
-		redirect_to merchants_path(@merchant)
+		if(@meal.save)
+			flash[:notice] = "Meal has been updated"
+			redirect_to merchant_path(@merchant)
+		else
+			flash[:notice] = "Please check form errors"
+			render :edit
+		end
 	end
 
 	private
