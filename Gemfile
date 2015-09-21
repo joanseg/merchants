@@ -24,6 +24,10 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+# For file upload as per guide on: http://railscasts.com/episodes/253-carrierwave-file-uploads
+#gem "rmagick" #rmagick need to be bundle install
+gem "carrierwave"
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

@@ -1,13 +1,14 @@
-<div>
-	<p>
-		<%= meal.body %>
-		<br/>
-		Price: <%= meal.price %> GBP
-		<br/>
-		<i>created <%= time_ago_in_words(meal.created_at) %> ago</i>
-		<br/>
-		<i> Orders to date: <%= meal.orders %> </i>
-		</br>
-		<%= link_to("Edit", edit_merchant_meal_path(@merchant, meal)) %> 
-	</p>
+<div class="row">
+	<div class="col-md-2 col-sm-2">
+		<%= show_image(meal) %>
+	</div>
+	<div class="col-md-10 col-sm-10"> 
+		<ul> 
+			<li><%= meal.body %></li>
+			<li>Price: <%= meal.price %> GBP</li>
+			<li><i>created <%= time_ago_in_words(meal.created_at) %> ago</i></li>
+			<li><i> Orders to date: <%= meal.orders %> </i></li>
+			<li><%= link_to("Edit", edit_merchant_meal_path(@merchant, meal)) %></li>
+		</ul>
+	</div>
 </div>

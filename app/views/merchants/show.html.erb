@@ -4,15 +4,24 @@
 
 <p><%= link_to "Delete", merchant_path(@merchant), method: :delete, data: {confirm: "Would you like to delete: #{@merchant.name}"} %>
 
-<h3><%= @merchant.name %></h3>
+<div class="container">
+  <h3><%= @merchant.name %></h3>
+  <div class="row">
+    <div class="col-md-2 col-sm-2 "><%= show_image(@merchant) %></div>
+    <div class="col-md-10 col-sm-10 ">
+      <ul> 
+        <li>Avg meal price: <%= @merchant.avgprice %> GBP</li>
+        <li><%= format_body(@merchant) %></li>
+        <li><%= link_to(pluralize(@merchant.meals.count, "meal"), merchant_meals_path(@merchant)) %></li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-<h4><%= @merchant.avgprice %></h4>
+<hr>
 
-<p><%= @merchant.body %></p>
-
-<%= show_image(@merchant) %>
-
-<p><u>Meals</u></p>
+<h3>Select your meal:</h3>
+<hr>
 
 <%= render partial: "meals/meal", collection: @merchant.meals, spacer_template: "shared/break" %>
 

@@ -1,6 +1,12 @@
-<div>
-	<h4><%= merchant.name %></h4>
-	<p><%= format_body(merchant) %></p>
-	<p><%= link_to(pluralize(merchant.meals.count, "meal"), merchant_meals_path(merchant)) %></p>
-	<p><%= link_to("Show", merchant_path(merchant)) %> | <%= link_to("Edit", edit_merchant_path(merchant)) %> | <%= link_to("Delete", merchant_path(merchant), method: :delete, data: {confirm: "Would you like to delete this Merchant?"}) %></p>
+<h4><%= merchant.name %></h4>
+<div class="row">
+	<div class="col-md-2 col-sm-2 "><%= show_image(merchant) %></div>
+	<div class="col-md-10 col-sm-10 ">
+		<ul> 
+			<li>Avg meal price: <%= merchant.avgprice %> GBP</li>
+			<li><%= format_body(merchant) %></li>
+			<li><%= link_to(pluralize(merchant.meals.count, "meal"), merchant_meals_path(merchant)) %></li>
+			<li><%= link_to("Show", merchant_path(merchant)) %> | <%= link_to("Edit", edit_merchant_path(merchant)) %> | <%= link_to("Delete", merchant_path(merchant), method: :delete, data: {confirm: "Would you like to delete this Merchant?"}) %></li>
+		</ul>
+	</div>
 </div>

@@ -10,6 +10,10 @@
 		<%= f.text_field :price, :class => 'price', :value => (number_with_precision(f.object.price, :precision => 2) || 0) %>
 	</p>
 	<p>
+		<%= f.label :image_name, "Image URL" %>
+		<%= f.text_field :image_name %>
+	</p>
+	<p>
 		<%= f.submit %>
 	</p>
 

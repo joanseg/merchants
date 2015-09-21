@@ -1,5 +1,3 @@
 <p><%= link_to "Back to Merchants near you", merchants_path %></p>
-<h3> Merchants names which match: "<%= params[:q] %>"</h3>
-<% @merchants.each do |result| %>
-	<p><%= link_to( result.name, merchant_path(result.id) )%></p>
-<% end %>
+
+<%= render partial: "merchants", locals: { merchants: @merchants, caption: "Merchants names which match: \"#{params[:q]} \"" } %>

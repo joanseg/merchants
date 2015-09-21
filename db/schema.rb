@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150917192717) do
+ActiveRecord::Schema.define(version: 20150920174825) do
 
   create_table "meals", force: true do |t|
     t.text     "body"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20150917192717) do
     t.datetime "updated_at"
     t.decimal  "price"
     t.integer  "orders"
+    t.string   "image"
+    t.string   "image_name"
   end
 
   add_index "meals", ["merchant_id"], name: "index_meals_on_merchant_id"

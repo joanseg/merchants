@@ -5,8 +5,6 @@ before_action :set_question
 	
 	def index
 		@meals = @merchant.meals
-		meal_id = params[:id]
-		@meal = Meal.find(meal_id)
 	end 
 
 	def show
@@ -38,7 +36,7 @@ before_action :set_question
 		meal_id = params[:id]
 		@meal = Meal.find(meal_id)
 
-		meal_params = params.require(:meal).permit(:body, :price)
+		meal_params = params.require(:meal).permit(:body, :price, :image_name)
 		@meal.update(meal_params) 
 
 		if(@meal.save)
@@ -53,7 +51,7 @@ before_action :set_question
 	private
 
 	def meal_params
-		params.require(:meal).permit(:body, :price)
+		params.require(:meal).permit(:body, :price, :image_name)
 	end
 
 	def set_question
