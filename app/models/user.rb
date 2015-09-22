@@ -1,5 +1,6 @@
 require_dependency 'app/validators/email_validator.rb'
 class User < ActiveRecord::Base
+	has_many :orders, dependent: :destroy
 	before_save :downcase_email
 
 	validates :name, presence: true, length: { maximum:50 }

@@ -3,7 +3,9 @@
 <p><%= link_to "Edit", edit_merchant_path(@merchant) %></p>
 
 <p><%= link_to "Delete", merchant_path(@merchant), method: :delete, data: {confirm: "Would you like to delete: #{@merchant.name}"} %>
-
+<p>
+  <%= link_to "Add Meal", new_merchant_meal_path(@merchant) %>
+</p>
 <div class="container">
   <h3><%= @merchant.name %></h3>
   <div class="row">
@@ -20,12 +22,21 @@
 
 <hr>
 
+<%= form_for(@order) do |f| %>
+  </br>
+  <%= f.label :other_amount %> GBP
+  </br>
+  <%= f.text_field :other_amount, :class => 'other_amount', :value => (number_with_precision(f.object.other_amount, :precision => 2) || 0) %> 
+  </br>
+  <%= submit %>
+<% end %>
+
 <h3>Select your meal:</h3>
 <hr>
 
 <%= render partial: "meals/meal", collection: @merchant.meals, spacer_template: "shared/break" %>
 
-<%= link_to "See all meals", merchant_meals_path(@merchant) %> | <%= link_to "Add Meal", new_merchant_meal_path(@merchant) %>
+<%= link_to "See all meals", merchant_meals_path(@merchant) %> 
 
 
 <html>
