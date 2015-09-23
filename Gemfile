@@ -50,10 +50,12 @@ end
 group :production do
     # Use pg for PostgreSQL on Heroku 
     gem 'pg'
+
+    # To enable features such as static asset serving and logging on Heroku
+	gem 'rails_12factor'
 end
 
-# To enable features such as static asset serving and logging on Heroku
-gem 'rails_12factor'
+
 
 
 

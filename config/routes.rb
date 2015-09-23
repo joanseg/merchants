@@ -10,7 +10,12 @@ Rails.application.routes.draw do
       resources :meals
     end
 
-    resources :users
+    resources :merchants do
+      resources :orders
+    end
+
+    resources :user
+
     get 'search' => 'merchants#search'
 
 # Merchants::Application.routes.draw do

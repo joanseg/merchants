@@ -22,7 +22,7 @@ class MerchantsController < ApplicationController
 		@merchant = Merchant.find(params[:id])
 		@meals = @merchant.meals
 		@recent_meals = @merchant.meals.recent_meals
-		@order = Order(:user_id).new
+		@order = @merchant.orders.new
 	end
 
 	def edit

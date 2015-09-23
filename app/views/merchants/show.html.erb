@@ -22,13 +22,14 @@
 
 <hr>
 
-<%= form_for(@order) do |f| %>
+<!-- review -->
+<%= form_for([@merchant, @order])  do |f| %>
   </br>
   <%= f.label :other_amount %> GBP
   </br>
   <%= f.text_field :other_amount, :class => 'other_amount', :value => (number_with_precision(f.object.other_amount, :precision => 2) || 0) %> 
   </br>
-  <%= submit %>
+  <%= f.submit %>
 <% end %>
 
 <h3>Select your meal:</h3>
