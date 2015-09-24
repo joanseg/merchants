@@ -22,20 +22,21 @@
 
 <hr>
 
-<!-- review -->
 <%= form_for([@merchant, @order])  do |f| %>
   </br>
   <%= f.label :other_amount %> GBP
   </br>
   <%= f.text_field :other_amount, :class => 'other_amount', :value => (number_with_precision(f.object.other_amount, :precision => 2) || 0) %> 
   </br>
+
+
+    <h3>Select your meal:</h3>
+    <hr>
+
+    <%= render partial: "meals/meal", collection: @merchant.meals, spacer_template: "shared/break" %>
+
   <%= f.submit %>
 <% end %>
-
-<h3>Select your meal:</h3>
-<hr>
-
-<%= render partial: "meals/meal", collection: @merchant.meals, spacer_template: "shared/break" %>
 
 <%= link_to "See all meals", merchant_meals_path(@merchant) %> 
 

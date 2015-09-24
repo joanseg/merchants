@@ -9,14 +9,13 @@ class OrdersController < ApplicationController
 		@order.user = @user
 
 		if @merchant.save
-			flash[:notice] = "Amount added"
+			flash[:notice] = "Order sent"
 			redirect_to merchant_path(@merchant)
 		else
 			flash[:notice] = "Please check form errors"
 			render :new
 		end
 	end
-
 
 	private
 
