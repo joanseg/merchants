@@ -8,13 +8,14 @@ Rails.application.routes.draw do
 
     resources :merchants do
       resources :meals
-    end
-
-    resources :merchants do
       resources :orders
     end
 
-    resources :user
+    resources :orders do
+      resources :line_items
+    end
+
+    resources :users
 
     get 'search' => 'merchants#search'
 

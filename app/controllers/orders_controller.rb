@@ -5,15 +5,36 @@ class OrdersController < ApplicationController
 
 	def create
 		@merchant = Merchant.find(params[:merchant_id])
-		@order = @merchant.orders.new(order_params)
-		@order.user = @user
+		@order = current_user.current_order(@merchant.id) #@merchant.orders.find_by(:user_id => current_user.id)
+		
+		if @order
+			@order.other_amount = params[:order[:other_amount]]
+			# to be added meals lineItems
+		else
+			@order = @merchant.orders.new(order_params)
+			@order.user = current_user
+		end
 
-		if @merchant.save
+		if @order.save
 			flash[:notice] = "Order sent"
 			redirect_to merchant_path(@merchant)
 		else
 			flash[:notice] = "Please check form errors"
 			render :new
+		end
+	end
+
+	def update
+		@merchant = Merchant.find(params[:merchant_id])
+		@order = current_user.current_order(@merchant.id) #@merchant.orders.find(params[:id])
+		@order.update(order_params)
+
+		if(@order.save)
+			flash[:notice] = "The order was updated"
+			redirect_to merchant_path(@merchant)
+		else
+			flash[:notice] = "Please check the form errors"
+			render merchant_path(@merchant) # to be checked
 		end
 	end
 

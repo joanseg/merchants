@@ -3,15 +3,15 @@
 		<%= show_image(meal) %>
 	</div>
 	<div class="col-md-10 col-sm-10"> 
+		Order id: <%= current_order.id %>
+		<%= form_for([current_order, current_order.line_items.new]) do |f| %>
+			<%= f.submit %>
+		<% end %>
 		<ul> 
 			<li><%= meal.body %></li>
 			<li>Price: <%= meal.price %> GBP</li>
 			<li><i>created <%= time_ago_in_words(meal.created_at) %> ago</i></li>
 			<li><i> Orders to date: <%= meal.orders %> </i></li>
-			<li>
-				<%= button_to 'Add to Cart' %>
-
-			</li>
 			<li><%= link_to("Edit", edit_merchant_meal_path(@merchant, meal)) %></li>
 		</ul>
 	</div>

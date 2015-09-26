@@ -11,7 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150923194058) do
+ActiveRecord::Schema.define(version: 20150926140950) do
+
+  create_table "companies", force: true do |t|
+    t.string   "name"
+    t.text     "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "line_items", force: true do |t|
+    t.integer  "quantity"
+    t.decimal  "item_price"
+    t.integer  "meal_id"
+    t.integer  "order_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "line_items", ["meal_id"], name: "index_line_items_on_meal_id"
+  add_index "line_items", ["order_id"], name: "index_line_items_on_order_id"
 
   create_table "meals", force: true do |t|
     t.text     "body"
@@ -44,6 +63,7 @@ ActiveRecord::Schema.define(version: 20150923194058) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "merchant_id"
+    t.datetime "sent_date"
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"

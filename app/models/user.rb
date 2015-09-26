@@ -11,6 +11,15 @@ class User < ActiveRecord::Base
 
 	has_secure_password
 
+	def current_order(merchant_id)
+		orders.where(:sent_date => nil, :merchant_id => merchant_id).first
+	end
+
+	def current_orders
+		orders.where(:sent_date => nil)
+	end
+
+
 	private
 
 	def downcase_email
