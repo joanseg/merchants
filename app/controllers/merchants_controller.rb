@@ -1,6 +1,6 @@
 class MerchantsController < ApplicationController
 
-  before_action :require_login, only: [:new, :edit, :update, :create, :destroy]
+  before_action :require_login, only: [:new, :edit, :update, :create, :destroy, :show]
 
 	def index
 		@merchants = Merchant.order_logic
@@ -10,12 +10,13 @@ class MerchantsController < ApplicationController
 
 	def search
 		@merchants = Merchant.search_results(params[:q])
-		if @merchants.length == 1
-			@merchant = @merchants.first
-			@meals = @merchant.meals
-			@recent_meals = @merchant.meals.recent_meals
-			render :show
-		end
+		# not showing straight away the Merchant show because login required
+		# if @merchants.length == 1
+		# 	@merchant = @merchants.first
+		# 	@meals = @merchant.meals
+		# 	@recent_meals = @merchant.meals.recent_meals
+		# 	render :show
+		# end
 	end
 
 	def show
@@ -23,9 +24,14 @@ class MerchantsController < ApplicationController
 		@meals = @merchant.meals
 		@recent_meals = @merchant.meals.recent_meals
 
-		@order = @merchant.orders.find_by(:user_id => current_user.id)
+		# @order = @merchant.orders.find_by(:user_id => current_user.id)
+		# @order = @merchant.orders.new(:user_id => current_user.id) unless @order
 
-		@order = @merchant.orders.new(:user_id => current_user.id) unless @order
+		if current_user.current_order(@merchant.id) == nil
+			current_user.orders.create(:merchant_id => @merchant.id)
+		end
+
+		@order = current_user.current_order(@merchant.id)
 	end
 
 	def edit
