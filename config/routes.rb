@@ -19,6 +19,9 @@ Rails.application.routes.draw do
 
     get 'search' => 'merchants#search'
 
+    post 'orders/:id/send_order' => 'orders#send_order', as: :send_order
+
+
 # Merchants::Application.routes.draw do
 
   # get 'merchants' => 'merchants#index'

@@ -38,6 +38,13 @@ class OrdersController < ApplicationController
 		end
 	end
 
+	def send_order
+		order = Order.find(params[:id])
+		order.sent_date = DateTime.new
+		order.save
+		redirect_to user_path(current_user.id)
+	end
+
 	private
 
 	def order_params
