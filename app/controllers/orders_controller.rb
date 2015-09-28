@@ -45,6 +45,12 @@ class OrdersController < ApplicationController
 		redirect_to user_path(current_user.id)
 	end
 
+	def accept_order
+		order.accepted_date = DateTime.now
+		order.save
+		redirect_to user_path(current_user.id)
+	end
+
 	private
 
 	def order_params

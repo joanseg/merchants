@@ -1,6 +1,12 @@
 <ul> 
 	<li>User name: <%= order.user_id %></li>
+	<li>Order ID: <%= order.id %></li>
 	<li>Other Amount<%= order.other_amount %> GBP</li>
 	<li>Session started <%= time_ago_in_words(order.created_at) %> ago</li>
 	<li>Sent date <%= order.sent_date %></li>
+	<li>Accepted date <%= order.accepted_date %></li>
 </ul>
+
+<%= form_for(:order, :url => accept_order_path(order.merchant_id)) do |f| %>
+  <%= f.submit("Accept order") %>
+<% end %>
