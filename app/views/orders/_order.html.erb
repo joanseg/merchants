@@ -1,0 +1,6 @@
+<ul> 
+	<li>User name: <%= order.user_id %></li>
+	<li>Other Amount<%= order.other_amount %> GBP</li>
+	<li>Session started <%= time_ago_in_words(order.created_at) %> ago</li>
+	<li>Sent date <%= order.sent_date %></li>
+</ul>

@@ -21,6 +21,9 @@ Rails.application.routes.draw do
 
     post 'orders/:id/send_order' => 'orders#send_order', as: :send_order
 
+    post 'orders/:id/accept_order' => 'orders#accept_order', as: :accept_order
+
+
 
 # Merchants::Application.routes.draw do
 

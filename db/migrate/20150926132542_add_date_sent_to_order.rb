@@ -1,5 +1,5 @@
 class AddDateSentToOrder < ActiveRecord::Migration
   def change
-    add_column :orders, :sent_date, :datetimeu
+    add_column :orders, :sent_date, :datetime
   end
 end

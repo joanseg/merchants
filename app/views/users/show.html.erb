@@ -13,8 +13,9 @@
   <tr>
      <th>Merchant</th>
      <th>Amount</th>
-     <th>Sent on</th>
+     <th>Order session started</th>
      <th>User</th>
+     <th>Order Sent Date</th>
   </tr>
   </thead>
   <tbody>
@@ -24,7 +25,12 @@
      <td><%= order.other_amount %></td>
      <td><%= order.created_at %></td>
      <td><%= order.user_id %></td>
+     <td><%= order.sent_date %></td>
   </tr>
   <% end %>  
   </tbody>
 </table>
+
+<hr />
+
+<%= render partial: "orders/order", collection: @orders, spacer_template: "shared/break" %>

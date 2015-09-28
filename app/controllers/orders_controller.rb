@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
 		end
 
 		if @order.save
-			flash[:notice] = "Order sent"
+			flash[:notice] = "item added"
 			redirect_to merchant_path(@merchant)
 		else
 			flash[:notice] = "Please check form errors"
@@ -40,7 +40,7 @@ class OrdersController < ApplicationController
 
 	def send_order
 		order = Order.find(params[:id])
-		order.sent_date = DateTime.new
+		order.sent_date = DateTime.now
 		order.save
 		redirect_to user_path(current_user.id)
 	end
