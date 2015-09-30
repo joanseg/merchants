@@ -1,25 +1,27 @@
-<div class="row">
-	<div class="col-md-2 col-sm-2">
-		<%= show_image(meal) %>
-	</div>
-	<div class="col-md-10 col-sm-10"> 
-		<%= form_for([current_order, current_order.line_items.new]) do |f| %>
-			<p>
-				<%= f.label :quantity %> 
-			</p>
-			<p>
-				<%= f.number_field :quantity %>
-			</p>
-			<%= f.hidden_field :meal_id, :value => meal.id %>
-			<%= f.submit 'Add' %>
-			
-		<% end %>
-		<ul> 
-			<li><%= meal.body %></li>
-			<li>Price: <%= meal.price %> GBP</li>
-			<li><i>created <%= time_ago_in_words(meal.created_at) %> ago</i></li>
-			<li><i> Orders to date: <%= meal.orders %> </i></li>
-			<li><%= link_to("Edit", edit_merchant_meal_path(@merchant, meal)) %></li>
-		</ul>
+<div class="col-sm-6">
+	<div class="row">
+		<div class="col-sm-6">
+			<%= show_image(meal) %>
+		</div>
+		<div class="col-sm-6"> 
+			<%= form_for([current_order, current_order.line_items.new]) do |f| %>
+				<p>
+					<%= f.label :quantity %> 
+				</p>
+				<p>
+					<%= f.number_field :quantity %>
+				</p>
+				<%= f.hidden_field :meal_id, :value => meal.id %>
+				<%= f.submit 'Add' %>
+				
+			<% end %>
+			<ul> 
+				<li><%= meal.body %></li>
+				<li>Price: <%= meal.price %> GBP</li>
+				<li><i>created <%= time_ago_in_words(meal.created_at) %> ago</i></li>
+				<li><i> Orders to date: <%= meal.orders %> </i></li>
+				<li><%= link_to("Edit", edit_merchant_meal_path(@merchant, meal)) %></li>
+			</ul>
+		</div>
 	</div>
 </div>

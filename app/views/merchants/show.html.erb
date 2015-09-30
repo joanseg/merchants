@@ -7,20 +7,26 @@
   <%= link_to "Add Meal", new_merchant_meal_path(@merchant) %>
 </p>
 <div class="container">
-  <h3><%= @merchant.name %></h3>
   <div class="row">
-    <div class="col-md-2 col-sm-2 "><%= show_image(@merchant) %></div>
-    <div class="col-md-10 col-sm-10 ">
+    <div class="col-sm-8"><h3><%= @merchant.name %></h3></div>
+    <div class="col-sm-4"><h3>Your order</h3></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2 "><%= show_image(@merchant) %></div>
+    <div class="col-sm-6 ">
       <ul> 
         <li>Avg meal price: <%= @merchant.avgprice %> GBP</li>
         <li><%= format_body(@merchant) %></li>
         <li><%= pluralize(@merchant.meals.count, "meal") %></li>
       </ul>
     </div>
-  </div>
-</div>
-
-    <ul>
+    <div class="col-sm-4 ">
+          <%= form_for([@merchant, @order]) do |f| %>
+            <%= f.label :other_amount %> GBP
+            <%= f.text_field :other_amount, :class => 'other_amount', :value => (number_with_precision(f.object.other_amount, :precision => 2) || 0) %> 
+            <%= f.submit 'Add' %>
+          <% end %>
+      <ul>
         <li>
           Other amount: <%= current_user.current_order(@merchant.id).other_amount %> GBP
         </li>
@@ -35,26 +41,21 @@
       <%= f.submit("Send order") %>
     <% end %>
 
+    </div>
+
+  </div>
+</div>
+
 <hr>
 
-<%= form_for([@merchant, @order]) do |f| %>
-  </br>
-  <%= f.label :other_amount %> GBP
-  </br>
-  <%= f.text_field :other_amount, :class => 'other_amount', :value => (number_with_precision(f.object.other_amount, :precision => 2) || 0) %> 
-  </br>
-  <%= f.submit 'Add' %>
-<% end %>
-
-    <h3>Select your meal:</h3>
-
-    <hr />
-
-    <%= render partial: "meals/meal", collection: @merchant.meals, spacer_template: "shared/break", locals: {current_order: @order  } %>
+   <div class="row">
+    <%= render partial: "meals/meal", collection: @merchant.meals, locals: {current_order: @order  } %>
+    </div>
 
 
 <!-- link_to "See all meals", merchant_meals_path(@merchant)  link deleted
  -->
+<!--  render partial: "meals/meal", collection: @merchant.meals, spacer_template: "shared/break", locals: {current_order: @order  } -->
 
 
 

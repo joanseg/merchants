@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require bootstrap.min
+ *= require sandstone.theme.min
  *
  *= require_self
  *= require_tree .
@@ -42,5 +43,12 @@ td {
 .login-profile {
 	text-align: right;
 }
-
+#header{
+	min-height: 15px;
+	background-color: #CCD6E0
+;
+}
+.row {
+	padding-bottom: 15px;
+}
 
