@@ -1,85 +1,21 @@
-<%= link_to('Create new merchant', new_merchant_path) %>
-<h3> <%= pluralize(@merchants.count, 'Merchant') %> near you</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <%= link_to('Create new merchant', new_merchant_path) %>
+    </div>
+    <div class="col-md-6">
+      <%= form_tag("/search", method: "get") do %>
+        <%= label_tag(:q, "Search for:") %>
+        <%= text_field_tag(:q) %>
+        <%= submit_tag("Search") %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<%= form_tag("/search", method: "get") do %>
-  <%= label_tag(:q, "Search for:") %>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag("Search") %>
-<% end %>
+
+<h3> <%= pluralize(@merchants.count, 'Merchant') %> near you</h3>
 
 <%= render partial: "merchants", locals: { merchants: @merchants, caption: "All Merchants" } %>
 <%= render partial: "merchants", locals: { merchants: @expensive_merchants, caption: "Expensive Merchants" } %>
 <%= render partial: "merchants", locals: { merchants: @budget_merchants, caption: "Affordable Merchants" } %>
-
-
-<p></p>
-
-<html>
-  <head>
-    <title>Place searches</title> 
-
-<!--     https://developers.google.com/maps/documentation/javascript/examples/place-search 
- -->
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        height: 50%;
-        width: 50%;
-      }
-    </style>
-    <script>
-var map;
-var infowindow;
-
-function initMap() {
-  var pyrmont = {lat: 51.52609, lng: -0.108995};
-
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: pyrmont,
-    zoom: 15
-  });
-
-  infowindow = new google.maps.InfoWindow();
-
-  var service = new google.maps.places.PlacesService(map);
-  service.nearbySearch({
-    location: pyrmont,
-    radius: 500,
-    types: ['restaurant']
-  }, callback);
-}
-
-function callback(results, status) {
-  if (status === google.maps.places.PlacesServiceStatus.OK) {
-    for (var i = 0; i < results.length; i++) {
-      createMarker(results[i]);
-    }
-  }
-}
-
-function createMarker(place) {
-  var placeLoc = place.geometry.location;
-  var marker = new google.maps.Marker({
-    map: map,
-    position: place.geometry.location
-  });
-
-  google.maps.event.addListener(marker, 'click', function() {
-    infowindow.setContent(place.name);
-    infowindow.open(map, this);
-  });
-}
-
-    </script>
-  </head>
-  <body>
-    <div id="map"></div>
-    <script src="https://maps.googleapis.com/maps/api/js?signed_in=true&libraries=places&callback=initMap" async defer></script>
-  </body>
-</html>

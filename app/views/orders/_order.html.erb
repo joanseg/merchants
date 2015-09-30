@@ -7,6 +7,6 @@
 	<li>Accepted date <%= order.accepted_date %></li>
 </ul>
 
-<%= form_for(:order, :url => accept_order_path(order.merchant_id)) do |f| %>
+<%= form_for(:order, :url => accept_order_path(order.id)) do |f| %>
   <%= f.submit("Accept order") %>
 <% end %>

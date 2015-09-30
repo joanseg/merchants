@@ -20,7 +20,6 @@
   </div>
 </div>
 
-    <p>Items in order id: <%= current_user.current_order(@merchant.id).id %></p>
     <ul>
         <li>
           Other amount: <%= current_user.current_order(@merchant.id).other_amount %> GBP
@@ -31,7 +30,6 @@
         </li>
       <% end %>
     </ul>
-    <%= send_order_path(@order.id) %>
 
     <%= form_for(:order, :url => send_order_path(@order.id)) do |f| %>
       <%= f.submit("Send order") %>
@@ -55,8 +53,8 @@
     <%= render partial: "meals/meal", collection: @merchant.meals, spacer_template: "shared/break", locals: {current_order: @order  } %>
 
 
-<%= link_to "See all meals", merchant_meals_path(@merchant) %> 
-
+<!-- link_to "See all meals", merchant_meals_path(@merchant)  link deleted
+ -->
 
 
 
