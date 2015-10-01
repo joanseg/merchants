@@ -52,3 +52,9 @@ td {
 	padding-bottom: 15px;
 }
 
+ul {
+	list-style-type: none;
+	margin: 2px;
+	padding: 2px;
+	line-height: 22px;
+}

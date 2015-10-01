@@ -1,9 +1,9 @@
 <div class="col-sm-6">
 	<div class="row">
-		<div class="col-sm-6">
+		<div class="col-sm-5">
 			<%= show_image(meal) %>
 		</div>
-		<div class="col-sm-6"> 
+		<div class="col-sm-7"> 
 			<%= form_for([current_order, current_order.line_items.new]) do |f| %>
 				<p>
 					<%= f.label :quantity %> 

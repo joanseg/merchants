@@ -6,41 +6,48 @@
 <p>
   <%= link_to "Add Meal", new_merchant_meal_path(@merchant) %>
 </p>
+
 <div class="container">
-  <div class="row">
-    <div class="col-sm-8"><h3><%= @merchant.name %></h3></div>
-    <div class="col-sm-4"><h3>Your order</h3></div>
-  </div>
-  <div class="row">
-    <div class="col-sm-2 "><%= show_image(@merchant) %></div>
-    <div class="col-sm-6 ">
-      <ul> 
-        <li>Avg meal price: <%= @merchant.avgprice %> GBP</li>
-        <li><%= format_body(@merchant) %></li>
-        <li><%= pluralize(@merchant.meals.count, "meal") %></li>
-      </ul>
-    </div>
-    <div class="col-sm-4 ">
-          <%= form_for([@merchant, @order]) do |f| %>
-            <%= f.label :other_amount %> GBP
-            <%= f.text_field :other_amount, :class => 'other_amount', :value => (number_with_precision(f.object.other_amount, :precision => 2) || 0) %> 
-            <%= f.submit 'Add' %>
-          <% end %>
-      <ul>
-        <li>
-          Other amount: <%= current_user.current_order(@merchant.id).other_amount %> GBP
-        </li>
-      <% current_user.current_order(@merchant.id).line_items.each do |line_item| %>
-        <li>
-          <%= line_item.meal.body %> <%= line_item.quantity %> <%= line_item.item_price %>
-        </li>
-      <% end %>
-    </ul>
+  <div class="row"><!-- 1 -->
+    
+    <div class="col-sm-8"> <!-- 1.A -->
+      <div class="row"> <!-- 1.1 -->
+            <h3><%= @merchant.name %></h3>
+      </div>
+      <div class="row"> <!-- 1.2 -->
+        <div class="col-sm-4 "><%= show_image(@merchant) %></div>
+        <div class="col-sm-8 ">
+            <br><strong><%= format_body(@merchant) %></strong></br>
+            <br><small>Avg meal price: <%= @merchant.avgprice %> GBP</small></br>
+            <br><em><%= pluralize(@merchant.meals.count, "meal") %></em></br>
+        </div>
+      </div>
+    </div>   
 
-    <%= form_for(:order, :url => send_order_path(@order.id)) do |f| %>
-      <%= f.submit("Send order") %>
-    <% end %>
-
+    <div class="col-sm-4"> <!-- 1.B -->
+      <div class="row"><!-- 2.1 --> 
+        <h3>Your order</h3>
+      </div>
+      <div class="row">
+            <%= form_for([@merchant, @order]) do |f| %>
+              <br><%= f.label :other_amount %> GBP</br>
+              <%= f.text_field :other_amount, :class => 'other_amount', :value => (number_with_precision(f.object.other_amount, :precision => 2) || 0) %> 
+              <%= f.submit 'Add' %>
+            <% end %>
+        <ul>
+          <li>
+            Other amount: <%= current_user.current_order(@merchant.id).other_amount %> GBP
+          </li>
+            <% current_user.current_order(@merchant.id).line_items.each do |line_item| %>
+          <li>
+            <%= line_item.meal.body %> <%= line_item.quantity %> <%= line_item.item_price %>
+          </li>
+            <% end %>
+        </ul>
+        <%= form_for(:order, :url => send_order_path(@order.id)) do |f| %>
+          <%= f.submit("Send order") %>
+        <% end %>
+      </div>
     </div>
 
   </div>
