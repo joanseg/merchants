@@ -1,21 +1,23 @@
-<div class="container" id="header">
-  <div class="row">
-    <div class="col-md-6">
-      <%= link_to('Create new merchant', new_merchant_path) %>
-    </div>
-    <div class="col-md-6">
+<div class="header" id="search-bar">
       <%= form_tag("/search", method: "get") do %>
-        <%= label_tag(:q, "Search for:") %>
+        <%= label_tag(:q, "") %>
         <%= text_field_tag(:q) %>
         <%= submit_tag("Search") %>
       <% end %>
-    </div>
-  </div>
 </div>
 
+  <div class="row" id="row-header">
+    <div class="col-sm-6">
+      <h3 class="thin"> <%= pluralize(@merchants.count, 'Merchant') %> near you</h3>
+    </div>
 
-<h3> <%= pluralize(@merchants.count, 'Merchant') %> near you</h3>
+    <div class="col-sm-6">
+      <button><%= link_to('Create new merchant', new_merchant_path) %></button>
+    </div>
+  </div>
 
+<hr />
 <%= render partial: "merchants", locals: { merchants: @merchants, caption: "" } %>
-<%= render partial: "merchants", locals: { merchants: @expensive_merchants, caption: "Expensive Merchants" } %>
-<%= render partial: "merchants", locals: { merchants: @budget_merchants, caption: "Affordable Merchants" } %>
+
+<!-- render partial: "merchants", locals: { merchants: @expensive_merchants, caption: "Expensive Merchants" }  -->
+<!-- render partial: "merchants", locals: { merchants: @budget_merchants, caption: "Affordable Merchants" } -->

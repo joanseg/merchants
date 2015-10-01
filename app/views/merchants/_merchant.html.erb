@@ -1,8 +1,8 @@
 <div class="col-sm-6">
-	<h4><%= merchant.name %></h4>
+	<h4><%= link_to(merchant.name, merchant_path(merchant)) %></h4>
 	<div class="row">
-		<div class="col-sm-4 "><%= show_image(merchant) %></div>
-		<div class="col-sm-8 ">
+		<div class="col-sm-5 col-md-4"><%= link_to(show_image(merchant), merchant_path(merchant)) %></div>
+		<div class="col-sm-7 col-md-8">
 			<ul> 
 				<li>Avg meal price: <%= merchant.avgprice %> GBP</li>
 				<li><%= format_body(merchant) %></li>

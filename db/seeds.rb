@@ -5,3 +5,5 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# m = Merchant.create([ { name: string }, { body: text }, { avgprice: decimal }, { image_name: string }]) 
