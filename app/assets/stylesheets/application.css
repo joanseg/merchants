@@ -40,14 +40,15 @@ td {
 .text-column {
 	text-align: left;
 }
-.login-profile {
+#login-logout {
 	text-align: right;
 }
-#header{
+
+.header {
 	min-height: 15px;
 	background-color: #CCD6E0
-;
 }
+
 .row {
 	padding-bottom: 15px;
 }
