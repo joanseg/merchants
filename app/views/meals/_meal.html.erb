@@ -5,16 +5,14 @@
 		</div>
 		<div class="col-sm-7"> 
 			<%= form_for([current_order, current_order.line_items.new]) do |f| %>
-				<p>
-					<%= f.label :quantity %> 
-				</p>
-				<p>
-					<%= f.number_field :quantity, class: 'form-control' %>
-				</p>
+<!-- 		f.label :quantity 
+			f.number_field :quantity, class: 'form-control select'
+ -->	
+ 				<%= f.select(:quantity, options_for_select([['0',0],['1',1],['2',2],['3',3],['4',4]],0)) %>
 				<%= f.hidden_field :meal_id, :value => meal.id %>
 				<%= f.submit 'Add', class: 'btn btn-primary btn-sm' %>
-				
-			<% end %>
+				<% end %>
+
 			<ul> 
 				<li><%= meal.body %></li>
 				<li>Price: <%= meal.price %> GBP</li>

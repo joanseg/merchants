@@ -1,22 +1,12 @@
-<div class="header" id="search-bar">
-      <%= form_tag("/search", method: "get") do %>
-        <%= label_tag(:q, "") %>
-        <%= text_field_tag(:q) %>
-        <%= submit_tag("Search") %>
-      <% end %>
-</div>
 
-<div class="row">
 
-  <div class="col-sm-9">
-    <button><%= link_to '< Back to Merchants near you', merchants_path %></button>
-  </div>
+
   
-  <div class="col-sm-3">
+  <div class="text-right">
       <%= link_to "Edit", edit_merchant_path(@merchant) %> | <%= link_to "Delete", merchant_path(@merchant), method: :delete, data: {confirm: "Would you like to delete: #{@merchant.name}"} %> | <%= link_to "Add Meal", new_merchant_meal_path(@merchant) %>
       </p>
   </div>
-</div>
+
 
 <div class="container">
   <div class="row"><!-- 1 -->
@@ -42,12 +32,12 @@
         <h4>Your order</h4>
             <%= form_for([@merchant, @order]) do |f| %>
               <br><%= f.label :other_amount %> GBP</br>
-              <%= f.text_field :other_amount, :class => 'other_amount', :value => (number_with_precision(f.object.other_amount, :precision => 2) || 0) %> 
-              <%= f.submit 'Add' %>
+              <%= f.text_field :other_amount, :class => 'other_amount', :value => (number_with_precision(f.object.other_amount, :precision => 2) || 0)%> 
+              <%= f.submit 'Add', class: 'btn btn-primary btn-sm' %>
             <% end %>
         <ul>
           <li>
-            Other amount: <%= current_user.current_order(@merchant.id).other_amount %> GBP
+            <%= current_user.current_order(@merchant.id).other_amount %> GBP
           </li>
             <% current_user.current_order(@merchant.id).line_items.each do |line_item| %>
           <li>
@@ -56,7 +46,7 @@
             <% end %>
         </ul>
         <%= form_for(:order, :url => send_order_path(@order.id)) do |f| %>
-          <%= f.submit("Send order") %>
+          <%= f.submit("Send order", class: 'btn btn-primary btn-md') %>
         <% end %>
       </div>
     </div>

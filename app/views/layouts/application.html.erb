@@ -21,16 +21,15 @@
         <div class="row body-header"> 
           <div class="col-xs-6">
             <div class="navbar-header" >
-              <%= link_to image_tag('http://www.verticalrail.com/wp-content/uploads/2011/07/google-merchant-center.jpg', height: '35'), merchants_path, class: 'navbar-brand' %>
+              <%= link_to image_tag('water.jpg', height: '35'), merchants_path, class: 'navbar-brand' %>
             </div> 
           </div>
           <div class="col-xs-6">
               <ul class="nav navbar-nav navbar-right"> 
                 <% if logged_in? %>
-                  <%= link_to current_user.name, user_path(current_user) %>,
-                  <%= link_to "Log out", logout_path, method: "delete" %>
+                  <strong><%= link_to current_user.name, user_path(current_user) %></strong>  
                 <% else %>
-                  <%= link_to "Log_in", login_path %>
+                  <%= link_to "Log In", login_path %> or
                   <%= link_to "Sign Up", new_user_path %>
                 <% end %>
               </ul>

@@ -1,6 +1,7 @@
-<p><%= link_to 'Merchants near you', merchants_path %></p>
-
 <h3>Profile</h3>
+
+<%= link_to "Log out", logout_path, method: "delete" %>
+
 
 <table>
 	<tr><td>Name:</td><td><%= @user.name %></td></tr>
