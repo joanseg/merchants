@@ -9,10 +9,10 @@
 					<%= f.label :quantity %> 
 				</p>
 				<p>
-					<%= f.number_field :quantity %>
+					<%= f.number_field :quantity, class: 'form-control' %>
 				</p>
 				<%= f.hidden_field :meal_id, :value => meal.id %>
-				<%= f.submit 'Add' %>
+				<%= f.submit 'Add', class: 'btn btn-primary btn-sm' %>
 				
 			<% end %>
 			<ul> 

@@ -41,10 +41,10 @@ td {
 	text-align: left;
 }
 
-.header {
+/*.header {
 	min-height: 15px;
 	background-color: #CCD6E0
-}
+}*/
 
 #login-logout {
 	text-align: right;
@@ -59,10 +59,10 @@ td {
 	padding-bottom: 15px;
 }
 
-#row-header {
+/*#row-header {
 	padding: 0px;
 	margin: 0px;
-}
+}*/
 
 h3 {
 	margin: 10px;
@@ -83,4 +83,21 @@ ul {
 	margin: 2px;
 	padding: 2px;
 	line-height: 22px;
+}
+
+#body-content
+{
+	padding-top: 50px
+}
+
+.body-header {
+	padding: 0px;
+}
+
+.btn-text-color {
+	color: white;
+}
+
+.btn-text-color:hover {
+	color: white;
 }

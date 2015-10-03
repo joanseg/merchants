@@ -7,28 +7,41 @@
   <%= csrf_meta_tags %>
 </head>
 	<body>
-    <div class="container"> 
- 
-            <div class= "container">
-              <% flash.each do |name, msg| %>
-                <%= content_tag(:div, msg, class: name, style: "background-color: #FFFF00;") %>
-              <% end %>
-            </div>
 
-            <div class="header" id="login-logout"> 
-              <% if logged_in? %>
-                <%= link_to current_user.name, user_path(current_user) %>,
-                <%= link_to "Log out", logout_path, method: "delete" %>
-              <% else %>
-                <%= link_to "Log_in", login_path %>
-                <%= link_to "Sign Up", new_user_path %>
-              <% end %>
-            </div>
-            
-            <div class= "container">             		
-              <%= yield %>
-            </div>
+    <div class="navbar navbar-default navbar-fixed-top">
 
-      </div>
+    <div class= "container">
+      <% flash.each do |name, msg| %>
+        <%= content_tag(:div, msg, class: 'alert alert-warning') %>
+      <% end %>
+    </div>
+
+      <div class="container">
+
+        <div class="row body-header"> 
+          <div class="col-xs-6">
+            <div class="navbar-header" >
+              <%= link_to image_tag('http://www.verticalrail.com/wp-content/uploads/2011/07/google-merchant-center.jpg', height: '35'), merchants_path, class: 'navbar-brand' %>
+            </div> 
+          </div>
+          <div class="col-xs-6">
+              <ul class="nav navbar-nav navbar-right"> 
+                <% if logged_in? %>
+                  <%= link_to current_user.name, user_path(current_user) %>,
+                  <%= link_to "Log out", logout_path, method: "delete" %>
+                <% else %>
+                  <%= link_to "Log_in", login_path %>
+                  <%= link_to "Sign Up", new_user_path %>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+    </div>
+        
+    <div class= "container" id="body-content">             		
+      <%= yield %>
+    </div>
+
 	</body>
 </html>

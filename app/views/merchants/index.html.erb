@@ -1,9 +1,18 @@
-<div class="header" id="search-bar">
-      <%= form_tag("/search", method: "get") do %>
-        <%= label_tag(:q, "") %>
-        <%= text_field_tag(:q) %>
-        <%= submit_tag("Search") %>
+
+<div class="row">
+
+          <%= form_tag("/search", method: "get", class: 'form-inline center') do %>
+        <div class="col-xs-4">
+            <%= label_tag(:q, "") %>
+        </div>
+        <div class="col-xs-4">
+          <%= text_field_tag(:q, '',class: 'form-control') %>
+        </div>
+        <div class="col-xs-1">
+          <%= submit_tag("Search", class: 'btn btn-primary btn-text-color') %>
+       </div>
       <% end %>
+
 </div>
 
   <div class="row" id="row-header">
@@ -12,7 +21,7 @@
     </div>
 
     <div class="col-sm-6">
-      <button><%= link_to('Create new merchant', new_merchant_path) %></button>
+      <button class="btn btn-primary"><%= link_to('Create new merchant', new_merchant_path, class: 'btn-text-color') %></button>
     </div>
   </div>
 
