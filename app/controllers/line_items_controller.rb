@@ -3,9 +3,15 @@ class LineItemsController < ApplicationController
 	def create
 		@order = Order.find(params[:order_id])
 		meal = Meal.find(params[:line_item][:meal_id])
-		@line_item = @order.line_items.new(line_item_params)
-		@line_item.item_price = meal.price
-		@line_item.meal = meal
+		@line_item = LineItem.where({order_id: @order.id, meal_id: meal.id}).first
+
+		if @line_item
+			@line_item.quantity += params[:line_item][:quantity].to_i
+		else			
+			@line_item = @order.line_items.new(line_item_params)
+			@line_item.item_price = meal.price
+			@line_item.meal = meal
+		end
 
 		if(@line_item.save)
 			flash[:notice] = "The meal was added"

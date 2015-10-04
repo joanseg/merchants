@@ -1,4 +1,4 @@
-
+ 
   <div class="text-right">
       <%= link_to "Edit", edit_merchant_path(@merchant) %> | <%= link_to "Delete", merchant_path(@merchant), method: :delete, data: {confirm: "Would you like to delete: #{@merchant.name}"} %> | <strong><%= link_to "Add Meal", new_merchant_meal_path(@merchant) %></strong>
       </p>
@@ -38,7 +38,7 @@
           </li>
             <% current_user.current_order(@merchant.id).line_items.each do |line_item| %>
           <li>
-            <%= line_item.meal.body %> <%= line_item.quantity %> <%= line_item.item_price %>
+            <%= line_item.meal.body %>; <%= line_item.quantity %> x <%= line_item.item_price %>
           </li>
             <% end %>
         </ul>
