@@ -8,5 +8,5 @@
 </ul>
 
 <%= form_for(:order, :url => accept_order_path(order.id)) do |f| %>
-  <%= f.submit("Accept order") %>
+  <%= f.submit("Accept order", class: 'btn btn-info btn-xs') %>
 <% end %>

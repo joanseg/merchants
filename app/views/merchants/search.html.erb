@@ -1,3 +1,2 @@
-<p><%= link_to "Back to Merchants near you", merchants_path %></p>
 
 <%= render partial: "merchants", locals: { merchants: @merchants, caption: "Merchants names which match: \"#{params[:q]} \"" } %>

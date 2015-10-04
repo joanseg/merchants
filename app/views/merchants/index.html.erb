@@ -1,20 +1,19 @@
 
-<div class="row">
+<div class="row ">
 
-        <div class="col-xs-3"></div>
-          <%= form_tag("/search", method: "get") do %>
-            <%= label_tag(:q, "") %>
-        <div class="col-xs-4">
-          <%= text_field_tag(:q, '',class: 'form-control') %>
-        </div>
-        <div class="col-xs-2">
-          <%= submit_tag("Search", class: 'btn btn-primary btn-text-color') %>
-        </div>
-          <% end %>
-        <div class="col-xs-3 text-right">
-          <strong ><%= link_to('Add Merchant', new_merchant_path) %></strong>
-        </div>
-
+    <div class="col-xs-3 "></div>
+      <%= form_tag("/search", method: "get") do %>
+        <%= label_tag(:q, "") %>
+    <div class="col-xs-4">
+      <%= text_field_tag(:q, '',class: 'form-control') %>
+    </div>
+    <div class="col-xs-2">
+      <%= submit_tag("Search", class: 'btn btn-primary btn-text-color') %>
+    </div>
+      <% end %>
+    <div class="col-xs-3 text-right">
+      <strong ><%= link_to('Add Merchant', new_merchant_path) %></strong>
+    </div>
 
 </div>
 

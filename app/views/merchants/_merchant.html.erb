@@ -7,7 +7,7 @@
 				<li>Avg meal price: <%= merchant.avgprice %> GBP</li>
 				<li><%= format_body(merchant) %></li>
 				<li><%= pluralize(merchant.meals.count, "meal") %></li>
-				<li><%= link_to("Show", merchant_path(merchant)) %> | <%= link_to("Edit", edit_merchant_path(merchant)) %> | <%= link_to("Delete", merchant_path(merchant), method: :delete, data: {confirm: "Would you like to delete this Merchant?"}) %></li>
+				<li><%= link_to("Edit", edit_merchant_path(merchant)) %> | <%= link_to("Delete", merchant_path(merchant), method: :delete, data: {confirm: "Would you like to delete this Merchant?"}) %></li>
 			</ul>
 		</div>
 	</div>
