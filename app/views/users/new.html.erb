@@ -1,12 +1,14 @@
 <h3>Sign Up</h3>
 
+ <div class= "container">
 <%= form_for(@user) do |f| %>
 	<% if @user.errors.any? %>
-		<p>The form contains <%= pluralize(@user.errors.count, "error") %></p>
+		<p>The form contains <%= pluralize(@user.errors.count, "error", class: 'alert alert-warning') %></p>
 		<ul>
 		<% @user.errors.full_messages.each do | message | %>
 			<li><%= message %><li>
 		<% end %>
+</div>
 		</ul>
 	<% end %>
 	<p>
