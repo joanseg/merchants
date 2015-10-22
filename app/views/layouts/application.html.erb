@@ -29,7 +29,11 @@
               <%= link_to image_tag('water.jpg', height: '35'), merchants_path, class: 'navbar-brand' %>
             </div> 
           </div>
-          <div class="col-xs-6">
+          <div class="col-xs-3 nav navbar-nav">
+            <%= link_to "Mobile App", "https://marvelapp.com/11a28bb", :target => "_blank" %>
+          </div>
+
+          <div class="col-xs-3">
               <ul class="nav navbar-nav navbar-right"> 
                 <% if logged_in? %>
                   <strong><%= link_to current_user.name, user_path(current_user) %></strong>  
