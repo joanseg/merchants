@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150928201343) do
+ActiveRecord::Schema.define(version: 20151101185040) do
 
   create_table "companies", force: true do |t|
     t.string   "name"
@@ -75,6 +75,9 @@ ActiveRecord::Schema.define(version: 20150928201343) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
+    t.integer  "merchant_id"
   end
+
+  add_index "users", ["merchant_id"], name: "index_users_on_merchant_id"
 
 end

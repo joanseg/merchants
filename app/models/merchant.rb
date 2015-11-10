@@ -2,6 +2,7 @@ class Merchant < ActiveRecord::Base
 
 	has_many :meals, dependent: :destroy
 	has_many :orders
+	has_many :users
 
 	validates :name, presence: true
 	validates :body, length: { minimum: 10 }
